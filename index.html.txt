@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snap FR — Les vidéos incontournables</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --yellow: #fffc00;
+      --black: #080808;
+      --dark: #111111;
+      --dark-2: #191919;
+      --dark-3: #242424;
+      --white: #ffffff;
+      --gray: #a6a6a6;
+      --red: #ff3158;
+      --green: #27d17f;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--black);
+      color: var(--white);
+      min-height: 100vh;
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: 72px;
+      background: rgba(8, 8, 8, .94);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid #242424;
+      display: flex;
+      align-items: center;
+      padding: 0 5%;
+      gap: 30px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      min-width: max-content;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--yellow);
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .logo-icon::before {
+      content: "";
+      width: 19px;
+      height: 22px;
+      background: #000;
+      border-radius: 50% 50% 45% 45%;
+      position: absolute;
+    }
+
+    .logo-icon::after {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 4px;
+      background: #000;
+      bottom: 8px;
+      border-radius: 50%;
+    }
+
+    .logo-text {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .logo-text span {
+      color: var(--yellow);
+    }
+
+    .search {
+      flex: 1;
+      max-width: 600px;
+      position: relative;
+      margin: auto;
+    }
+
+    .search input {
+      width: 100%;
+      height: 43px;
+      border: 0;
+      outline: none;
+      border-radius: 12px;
+      background: #1d1d1d;
+      color: white;
+      padding: 0 50px 0 17px;
+      font-size: 14px;
+      transition: .2s;
+    }
+
+    .search input:focus {
+      box-shadow: 0 0 0 2px var(--yellow);
+    }
+
+    .search button {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      width: 33px;
+      height: 33px;
+      border: 0;
+      border-radius: 9px;
+      background: var(--yellow);
+      cursor: pointer;
+      font-size: 17px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-btn {
+      width: 40px;
+      height: 40px;
+      border: 0;
+      border-radius: 12px;
+      background: #1c1c1c;
+      color: white;
+      cursor: pointer;
+      font-size: 18px;
+      transition: .2s;
+    }
+
+    .header-btn:hover {
+      background: #292929;
+      transform: translateY(-1px);
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      min-height: 470px;
+      display: flex;
+      align-items: center;
+      padding: 70px 7%;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 80% 40%, rgba(255,252,0,.16), transparent 30%),
+        linear-gradient(120deg, #090909, #131313);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: var(--yellow);
+      opacity: .05;
+      right: -180px;
+      top: -130px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+
+    .badge {
+      display: inline-flex;
+      padding: 7px 12px;
+      background: rgba(255,252,0,.12);
+      border: 1px solid rgba(255,252,0,.25);
+      color: var(--yellow);
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: .95;
+      letter-spacing: -4px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: var(--yellow);
+    }
+
+    .hero p {
+      color: #bdbdbd;
+      font-size: 17px;
+      line-height: 1.6;
+      max-width: 600px;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      border: 0;
+      padding: 13px 20px;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .primary-btn {
+      background: var(--yellow);
+      color: #000;
+    }
+
+    .secondary-btn {
+      background: #242424;
+      color: white;
+    }
+
+    .primary-btn:hover,
+    .secondary-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* ================= MAIN ================= */
+
+    main {
+      padding: 40px 5%;
+    }
+
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .section-title h2 {
+      font-size: 25px;
+      letter-spacing: -.7px;
+    }
+
+    .section-title a {
+      color: var(--gray);
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .section-title a:hover {
+      color: var(--yellow);
+    }
+
+    /* ================= CATEGORIES ================= */
+
+    .categories {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 5px;
+    }
+
+    .categories::-webkit-scrollbar {
+      display: none;
+    }
+
+    .category {
+      flex: 0 0 auto;
+      padding: 10px 17px;
+      border-radius: 50px;
+      background: #1c1c1c;
+      border: 1px solid #292929;
+      color: #ddd;
+      cursor: pointer;
+      font-size: 13px;
+      transition: .2s;
+    }
+
+    .category:hover,
+    .category.active {
+      background: var(--yellow);
+      color: #000;
+      border-color: var(--yellow);
+      font-weight: bold;
+    }
+
+    /* ================= VIDEO GRID ================= */
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .video-card {
+      background: var(--dark);
+      border: 1px solid #222;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: .25s;
+    }
+
+    .video-card:hover {
+      transform: translateY(-5px);
+      border-color: #3b3b3b;
+      box-shadow: 0 12px 35px rgba(0,0,0,.3);
+    }
+
+    .thumbnail {
+      height: 220px;
+      position: relative;
+      overflow: hidden;
+      background: #222;
+    }
+
+    .thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: .4s;
+    }
+
+    .video-card:hover .thumbnail img {
+      transform: scale(1.05);
+    }
+
+    .duration {
+      position: absolute;
+      bottom: 9px;
+      right: 9px;
+      padding: 5px 7px;
+      border-radius: 6px;
+      background: rgba(0,0,0,.8);
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .views {
+      position: absolute;
+      top: 9px;
+      left: 9px;
+      padding: 5px 8px;
+      border-radius: 50px;
+      background: rgba(0,0,0,.72);
+      font-size: 10px;
+    }
+
+    .video-info {
+      padding: 14px;
+    }
+
+    .video-info h3 {
+      font-size: 15px;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+
+    .creator {
+      color: #999;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 5px;
+    }
+
+    .verified {
+      color: #4ba8ff;
+    }
+
+    /* ================= TRENDING ================= */
+
+    .trending-card {
+      background: linear-gradient(135deg, #1b1b1b, #101010);
+      border: 1px solid #292929;
+      border-radius: 18px;
+      padding: 20px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .trend-number {
+      font-size: 45px;
+      font-weight: 900;
+      color: var(--yellow);
+      min-width: 60px;
+    }
+
+    .trend-content {
+      flex: 1;
+    }
+
+    .trend-content h3 {
+      margin-bottom: 7px;
+    }
+
+    .trend-content p {
+      color: #929292;
+      font-size: 13px;
+    }
+
+    .trend-arrow {
+      font-size: 25px;
+      color: #555;
+    }
+
+    /* ================= EMPTY ================= */
+
+    .empty {
+      display: none;
+      text-align: center;
+      padding: 70px 20px;
+      color: #888;
+    }
+
+    .empty-icon {
+      font-size: 45px;
+      margin-bottom: 15px;
+    }
+
+    /* ================= MODAL ================= */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.88);
+      z-index: 3000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-box {
+      width: min(1000px, 100%);
+      background: #111;
+      border: 1px solid #292929;
+      border-radius: 20px;
+      overflow: hidden;
+      max-height: 94vh;
+      overflow-y: auto;
+    }
+
+    .player {
+      background: #000;
+      position: relative;
+    }
+
+    .player video {
+      width: 100%;
+      max-height: 580px;
+      display: block;
+    }
+
+    .close {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      z-index: 2;
+      width: 38px;
+      height: 38px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(0,0,0,.7);
+      color: white;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .modal-content {
+      padding: 22px;
+    }
+
+    .modal-content h2 {
+      font-size: 23px;
+      margin-bottom: 8px;
+    }
+
+    .modal-meta {
+      color: #888;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .action {
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid #303030;
+      background: #1c1c1c;
+      color: white;
+      cursor: pointer;
+    }
+
+    .action:hover {
+      background: #292929;
+    }
+
+    .action.liked {
+      color: var(--red);
+      border-color: rgba(255,49,88,.4);
+    }
+
+    .action.saved {
+      color: var(--yellow);
+      border-color: rgba(255,252,0,.4);
+    }
+
+    /* ================= TOAST ================= */
+
+    .toast {
+      position: fixed;
+      bottom: 25px;
+      left: 50%;
+      transform: translate(-50%, 100px);
+      background: white;
+      color: black;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: bold;
+      z-index: 5000;
+      transition: .3s;
+    }
+
+    .toast.show {
+      transform: translate(-50%, 0);
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      border-top: 1px solid #222;
+      padding: 35px 5%;
+      color: #666;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 1100px) {
+      .video-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 800px) {
+      header {
+        padding: 0 15px;
+        gap: 10px;
+      }
+
+      .logo-text {
+        display: none;
+      }
+
+      .header-actions {
+        display: none;
+      }
+
+      .hero {
+        min-height: 400px;
+        padding: 50px 6%;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .thumbnail {
+        height: 200px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .thumbnail {
+        height: 250px;
+      }
+
+      main {
+        padding: 30px 15px;
+      }
+
+      .hero {
+        padding: 45px 20px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .section-title h2 {
+        font-size: 21px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+
+  <header>
+
+    <div class="logo" onclick="scrollToTop()">
+      <div class="logo-icon"></div>
+      <div class="logo-text">SNAP <span>FR</span></div>
+    </div>
+
+    <div class="search">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Rechercher une vidéo, un créateur..."
+        autocomplete="off"
+      >
+      <button onclick="searchVideos()">⌕</button>
+    </div>
+
+    <div class="header-actions">
+      <button class="header-btn" onclick="showToast('Fonctionnalité bientôt disponible')">♡</button>
+      <button class="header-btn" onclick="showToast('Connexion bientôt disponible')">♙</button>
+    </div>
+
+  </header>
+
+  <!-- ================= HERO ================= -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="badge">🔥 LES TENDANCES DU MOMENT</div>
+
+      <h1>
+        Le meilleur du<br>
+        <span>Snap FR.</span>
+      </h1>
+
+      <p>
+        Retrouvez au même endroit les vidéos, moments cultes,
+        créateurs et tendances qui font parler sur les réseaux.
+      </p>
+
+      <div class="hero-buttons">
+        <button class="primary-btn" onclick="scrollToVideos()">
+          ▶ Découvrir les vidéos
+        </button>
+
+        <button class="secondary-btn" onclick="filterCategory('Tendances')">
+          🔥 Tendances
+        </button>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= MAIN ================= -->
+
+  <main>
+
+    <!-- CATEGORIES -->
+
+    <section class="section">
+
+      <div class="section-title">
+        <h2>Explorer</h2>
+      </div>
+
+      <div class="categories">
+
+        <div class="category active" data-category="Toutes">
+          Toutes
+        </div>
+
+        <div class="category" data-category="Tendances">
+          🔥 Tendances
+        </div>
+
+        <div class="category" data-category="Humour">
+          😂 Humour
+        </div>
+
+        <div class="category" data-category="Buzz">
+          🚨 Buzz
+        </div>
+
+        <div class="category" data-category="Lifestyle">
+          ✨ Lifestyle
+        </div>
+
+        <div class="category" data-category="Sport">
+          ⚽ Sport
+        </div>
+
+        <div class="category" data-category="Musique">
+          🎵 Musique
+        </div>
+
+        <div class="category" data-category="Insolite">
+          🤯 Insolite
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- VIDEOS -->
+
+    <section class="section" id="videosSection">
+
+      <div class="section-title">
+        <h2>🔥 Les vidéos populaires</h2>
+        <a onclick="resetFilters()">Voir tout</a>
+      </div>
+
+      <div class="video-grid" id="videoGrid"></div>
+
+      <div class="empty" id="emptyState">
+        <div class="empty-icon">🔎</div>
+        <h3>Aucune vidéo trouvée</h3>
+        <p>Essaie avec un autre mot-clé.</p>
+      </div>
+
+    </section>
+
+    <!-- TRENDING -->
+
+    <section class="section">
+
+      <div class="section-title">
+        <h2>📈 En ce moment</h2>
+      </div>
+
+      <div class="trending-card">
+
+        <div class="trend-number">#1</div>
+
+        <div class="trend-content">
+          <h3>#snapfr</h3>
+          <p>
+            Le hashtag du moment — découvre les vidéos les plus
+            regardées de la communauté.
+          </p>
+        </div>
+
+        <div class="trend-arrow">→</div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    <div>
+      <strong>SNAP FR</strong> — La plateforme des tendances françaises.
+    </div>
+
+    <div>
+      © 2026 Snap FR · Tous droits réservés
+    </div>
+
+  </footer>
+
+  <!-- ================= MODAL VIDEO ================= -->
+
+  <div class="modal" id="videoModal">
+
+    <div class="modal-box">
+
+      <div class="player">
+
+        <button class="close" onclick="closeModal()">×</button>
+
+        <video id="modalVideo" controls playsinline>
+          <source src="" type="video/mp4">
+          Votre navigateur ne supporte pas la vidéo.
+        </video>
+
+      </div>
+
+      <div class="modal-content">
+
+        <h2 id="modalTitle">Titre de la vidéo</h2>
+
+        <div class="modal-meta" id="modalMeta">
+          Créateur · 0 vues
+        </div>
+
+        <div class="modal-actions">
+
+          <button class="action" id="likeBtn" onclick="toggleLike()">
+            ♡ J'aime
+          </button>
+
+          <button class="action" id="saveBtn" onclick="toggleSave()">
+            ☆ Sauvegarder
+          </button>
+
+          <button class="action" onclick="shareVideo()">
+            ↗ Partager
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- TOAST -->
+
+  <div class="toast" id="toast"></div>
+
+
+  <script>
+
+    /* =====================================================
+       DONNÉES DES VIDÉOS
+       ===================================================== */
+
+    const videos = [
+
+      {
+        id: 1,
+        title: "Le moment complètement inattendu 😂",
+        creator: "SnapFR",
+        category: "Humour",
+        views: "2,4 M",
+        duration: "0:18",
+        image: "https://images.unsplash.com/photo-1527224857830-43a7acc85260?auto=format&fit=crop&w=900&q=80",
+        video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+      },
+
+      {
+        id: 2,
+        title: "Cette séquence fait le tour des réseaux",
+        creator: "Buzz France",
+        category: "Buzz",
+        views: "4,8 M",
+        duration: "0:32",
+        image: "https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=900&q=80",
+        video: "https://www.w3schools.com/html/mov_bbb.mp4"
+      },
+
+      {
+        id: 3,
+        title: "Le défi que personne n'attendait",
+        creator: "Team FR",
+        category: "Tendances",
+        views: "3,1 M",
+        duration: "0:27",
+        image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80",
+        video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+      },
+
+      {
+        id: 4,
+        title: "Une réaction absolument incroyable 😭",
+        creator: "Daily Snap",
+        category: "Humour",
+        views: "1,9 M",
+        duration: "0:21",
+        image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80",
+        video: "https://www.w3schools.com/html/mov_bbb.mp4"
+      },
+
+      {
+        id: 5,
+        title: "Le moment sportif qui devient viral",
+        creator: "Sport FR",
+        category: "Sport",
+        views: "5,2 M",
+        duration: "0:36",
+        image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=900&q=80",
+        video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+      },
+
+      {
+        id: 6,
+        title: "La soirée dont tout le monde parle",
+        creator: "Night FR",
+        category: "Lifestyle",
+        views: "2,7 M",
+        duration: "0:42",
+        image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=900&q=80",
+        video: "https://www.w3schools.com/html/mov_bbb.mp4"
+      },
+
+      {
+        id: 7,
+        title: "Le son qui est partout en ce moment 🎵",
+        creator: "Music FR",
+        category: "Musique",
+        views: "6,3 M",
+        duration: "0:25",
+        image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=900&q=80",
+        video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+      },
+
+      {
+        id: 8,
+        title: "Personne ne s'attendait à cette fin 🤯",
+        creator: "Insolite FR",
+        category: "Insolite",
+        views: "7,1 M",
+        duration: "0:39",
+        image: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=900&q=80",
+        video: "https://www.w3schools.com/html/mov_bbb.mp4"
+      },
+
+      {
+        id: 9,
+        title: "La tendance qui arrive en France",
+        creator: "Trend FR",
+        category: "Tendances",
+        views: "1,6 M",
+        duration: "0:17",
+        image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=900&q=80",
+        video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+      },
+
+      {
+        id: 10,
+        title: "Le fou rire impossible à arrêter 😂",
+        creator: "Funny FR",
+        category: "Humour",
+        views: "3,8 M",
+        duration: "0:29",
+        image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80",
+        video: "https://www.w3schools.com/html/mov_bbb.mp4"
+      },
+
+      {
+        id: 11,
+        title: "Cette image devient virale",
+        creator: "Buzz France",
+        category: "Buzz",
+        views: "2,2 M",
+        duration: "0:23",
+        image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=80",
+        video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+      },
+
+      {
+        id: 12,
+        title: "Le challenge du week-end",
+        creator: "Challenge FR",
+        category: "Tendances",
+        views: "4,4 M",
+        duration: "0:31",
+        image: "https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=900&q=80",
+        video: "https://www.w3schools.com/html/mov_bbb.mp4"
+      }
+
+    ];
+
+
+    /* =====================================================
+       VARIABLES
+       ===================================================== */
+
+    const grid = document.getElementById("videoGrid");
+    const emptyState = document.getElementById("emptyState");
+    const searchInput = document.getElementById("searchInput");
+
+    let currentVideos = [...videos];
+    let currentVideo = null;
+
+
+    /* =====================================================
+       AFFICHER LES VIDÉOS
+       ===================================================== */
+
+    function renderVideos(list) {
+
+      grid.innerHTML = "";
+
+      if (list.length === 0) {
+        emptyState.style.display = "block";
+        return;
+      }
+
+      emptyState.style.display = "none";
+
+      list.forEach(video => {
+
+        const card = document.createElement("article");
+
+        card.className = "video-card";
+
+        card.innerHTML = `
+          <div class="thumbnail">
+
+            <img
+              src="${video.image}"
+              alt="${video.title}"
+              loading="lazy"
+            >
+
+            <span class="views">👁 ${video.views}</span>
+
+            <span class="duration">
+              ${video.duration}
+            </span>
+
+          </div>
+
+          <div class="video-info">
+
+            <h3>${video.title}</h3>
+
+            <div class="creator">
+              <span>
+                ${video.creator}
+                <span class="verified">✓</span>
+              </span>
+
+              <span>${video.category}</span>
+            </div>
+
+          </div>
+        `;
+
+        card.addEventListener("click", () => openVideo(video));
+
+        grid.appendChild(card);
+
+      });
+
+    }
+
+
+    /* =====================================================
+       OUVRIR UNE VIDÉO
+       ===================================================== */
+
+    function openVideo(video) {
+
+      currentVideo = video;
+
+      document.getElementById("modalTitle").textContent =
+        video.title;
+
+      document.getElementById("modalMeta").textContent =
+        `${video.creator} · ${video.views} vues · ${video.category}`;
+
+      const player = document.getElementById("modalVideo");
+
+      player.src = video.video;
+
+      document.getElementById("videoModal")
+        .classList.add("show");
+
+      document.body.style.overflow = "hidden";
+
+      player.play().catch(() => {});
+
+      updateButtons();
+
+    }
+
+
+    /* =====================================================
+       FERMER
+       ===================================================== */
+
+    function closeModal() {
+
+      const modal = document.getElementById("videoModal");
+      const player = document.getElementById("modalVideo");
+
+      player.pause();
+      player.src = "";
+
+      modal.classList.remove("show");
+
+      document.body.style.overflow = "";
+
+    }
+
+
+    /* =====================================================
+       LIKE
+       ===================================================== */
+
+    function toggleLike() {
+
+      if (!currentVideo) return;
+
+      const key = "liked_" + currentVideo.id;
+
+      const liked = localStorage.getItem(key) === "true";
+
+      localStorage.setItem(key, String(!liked));
+
+      updateButtons();
+
+      showToast(
+        !liked
+          ? "❤️ Vidéo ajoutée à tes likes"
+          : "Like retiré"
+      );
+
+    }
+
+
+    /* =====================================================
+       SAUVEGARDE
+       ===================================================== */
+
+    function toggleSave() {
+
+      if (!currentVideo) return;
+
+      const key = "saved_" + currentVideo.id;
+
+      const saved = localStorage.getItem(key) === "true";
+
+      localStorage.setItem(key, String(!saved));
+
+      updateButtons();
+
+      showToast(
+        !saved
+          ? "⭐ Vidéo sauvegardée"
+          : "Vidéo retirée des sauvegardes"
+      );
+
+    }
+
+
+    /* =====================================================
+       METTRE À JOUR LES BOUTONS
+       ===================================================== */
+
+    function updateButtons() {
+
+      if (!currentVideo) return;
+
+      const liked =
+        localStorage.getItem("liked_" + currentVideo.id) === "true";
+
+      const saved =
+        localStorage.getItem("saved_" + currentVideo.id) === "true";
+
+      const likeBtn =
+        document.getElementById("likeBtn");
+
+      const saveBtn =
+        document.getElementById("saveBtn");
+
+      likeBtn.classList.toggle("liked", liked);
+      saveBtn.classList.toggle("saved", saved);
+
+      likeBtn.textContent =
+        liked ? "♥ J'aime" : "♡ J'aime";
+
+      saveBtn.textContent =
+        saved ? "★ Sauvegardée" : "☆ Sauvegarder";
+
+    }
+
+
+    /* =====================================================
+       PARTAGER
+       ===================================================== */
+
+    async function shareVideo() {
+
+      if (!currentVideo) return;
+
+      const shareData = {
+        title: currentVideo.title,
+        text: `Regarde cette vidéo sur Snap FR : ${currentVideo.title}`,
+        url: window.location.href
+      };
+
+      if (navigator.share) {
+
+        try {
+          await navigator.share(shareData);
+        } catch (error) {}
+
+      } else {
+
+        await navigator.clipboard.writeText(
+          window.location.href
+        );
+
+        showToast("🔗 Lien copié !");
+
+      }
+
+    }
+
+
+    /* =====================================================
+       RECHERCHE
+       ===================================================== */
+
+    function searchVideos() {
+
+      const query =
+        searchInput.value
+          .toLowerCase()
+          .trim();
+
+      if (!query) {
+        currentVideos = [...videos];
+        renderVideos(currentVideos);
+        return;
+      }
+
+      currentVideos = videos.filter(video => {
+
+        return (
+          video.title.toLowerCase().includes(query) ||
+          video.creator.toLowerCase().includes(query) ||
+          video.category.toLowerCase().includes(query)
+        );
+
+      });
+
+      renderVideos(currentVideos);
+
+      scrollToVideos();
+
+    }
+
+
+    searchInput.addEventListener("input", () => {
+
+      if (searchInput.value.trim() === "") {
+
+        currentVideos = [...videos];
+
+        renderVideos(currentVideos);
+
+      }
+
+    });
+
+
+    searchInput.addEventListener("keydown", event => {
+
+      if (event.key === "Enter") {
+        searchVideos();
+      }
+
+    });
+
+
+    /* =====================================================
+       CATÉGORIES
+       ===================================================== */
+
+    document.querySelectorAll(".category")
+      .forEach(button => {
+
+        button.addEventListener("click", () => {
+
+          const category =
+            button.dataset.category;
+
+          document.querySelectorAll(".category")
+            .forEach(btn =>
+              btn.classList.remove("active")
+            );
+
+          button.classList.add("active");
+
+          filterCategory(category);
+
+        });
+
+      });
+
+
+    function filterCategory(category) {
+
+      if (category === "Toutes") {
+
+        currentVideos = [...videos];
+
+      } else {
+
+        currentVideos =
+          videos.filter(video =>
+            video.category === category
+          );
+
+      }
+
+      renderVideos(currentVideos);
+
+      scrollToVideos();
+
+    }
+
+
+    function resetFilters() {
+
+      document.querySelectorAll(".category")
+        .forEach(btn =>
+          btn.classList.remove("active")
+        );
+
+      document
+        .querySelector('[data-category="Toutes"]')
+        .classList.add("active");
+
+      searchInput.value = "";
+
+      currentVideos = [...videos];
+
+      renderVideos(currentVideos);
+
+    }
+
+
+    /* =====================================================
+       UTILITAIRES
+       ===================================================== */
+
+    function scrollToVideos() {
+
+      document.getElementById("videosSection")
+        .scrollIntoView({
+          behavior: "smooth"
+        });
+
+    }
+
+
+    function scrollToTop() {
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+
+
+    function showToast(message) {
+
+      const toast =
+        document.getElementById("toast");
+
+      toast.textContent = message;
+
+      toast.classList.add("show");
+
+      setTimeout(() => {
+
+        toast.classList.remove("show");
+
+      }, 2200);
+
+    }
+
+
+    /* =====================================================
+       FERMETURE DU MODAL
+       ===================================================== */
+
+    document
+      .getElementById("videoModal")
+      .addEventListener("click", event => {
+
+        if (event.target.id === "videoModal") {
+          closeModal();
+        }
+
+      });
+
+
+    document.addEventListener("keydown", event => {
+
+      if (event.key === "Escape") {
+        closeModal();
+      }
+
+    });
+
+
+    /* =====================================================
+       INITIALISATION
+       ===================================================== */
+
+    renderVideos(videos);
+
+  </script>
+
+</body>
+</html>
